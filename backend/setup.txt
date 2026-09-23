@@ -1,0 +1,24 @@
+#to check version of node,
+npm node -v
+npm -v
+
+#initialize a node based project
+npm init
+
+#skip the options
+npm init -y
+
+#building apis in js
+npm install express
+
+#to install env dependencies from .env file
+npm install dotenv
+
+#install all the dependencies present in package.json
+npm install
+
+package.json
+"type": "module",
+"scripts": {
+    "start": "node --watch server.js"
+},

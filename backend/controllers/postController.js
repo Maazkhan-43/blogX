@@ -27,12 +27,21 @@ export function getAllPosts(req,res){
 
 export function getPostById(req,res){
     let resultPost = null;
+    const id = Number(req.params.id);
 
-    for(post of posts){
-        if(post.id == Number(req.params.id)){
-            resultPost = post;
-            break;
-        }
+    if(!id){
+        return res.status(400).send({"data" : resultPost
+                                        ,"message" : "Request id is not a number. please try again."
+                });
     }
-   return res.status(200).send(resultPost);
+    resultPost = posts.find(post => post.id === id);
+    if(!resultPost){
+        return res.status(404).send({"data" : resultPost
+                                        ,"message" : `No post found with id: ${id}`
+                });
+    }
+
+    return res.status(200).send({"data" : resultPost
+                                        ,"message" : `Success. Post found with id: ${id}`
+                });
 }

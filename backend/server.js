@@ -1,17 +1,17 @@
 import express from "express";  
 import dotenv from 'dotenv';
-import {getAllPosts} from './controllers/postController.js';
-import {getPostById} from './controllers/postController.js';
-dotenv.config();
+import postsRoute from './routes/postsRoute.js';
 
+console.log('blogX backend is starting...');
+dotenv.config();
 const app = express();
+app.use('/api/v1/', postsRoute);
 
 app.get('/', (req,res)=>{
     return res.status(200).send('welcome to blogX');
 });
 
-app.get('/posts',getAllPosts);
-app.get('/posts/:id',getPostById);
+
 
 const PORT = process.env.EXPRESS_PORT;
 app.listen(PORT, ()=>{

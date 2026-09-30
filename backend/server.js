@@ -5,11 +5,13 @@ import postsRoute from './routes/postsRoute.js';
 console.log('blogX backend is starting...');
 dotenv.config();
 const app = express();
-app.use('/api/v1/', postsRoute);
 
 app.get('/', (req,res)=>{
     return res.status(200).send('welcome to blogX');
 });
+
+app.use(express.json());
+app.use('/api/v1/', postsRoute);
 
 
 
